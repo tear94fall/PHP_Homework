@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/PHPweb2019/dbconn.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/delete.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/delete_ripple.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/down_board.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/down_ripple.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/insert.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/insert_ripple.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/list.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/modify.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/modify_form.php" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/delete.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/insert.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/list.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/modify.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/modify_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/passwd_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/search.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/view.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/write_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/guestbook/delete.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/guestbook/guestbook.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/guestbook/insert.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/guestbook/passwd_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/index2.php" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/login/check_id.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/login/login_form.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/login/logoff.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/login/member_form.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/main.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/insert.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/list.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/search.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/view.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/survey/result.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/survey/survey.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/survey/update.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test.php" charset="UTF-8" />
+    <file url="PROJECT" charset="x-windows-949" />
+  </component>
+</project>
