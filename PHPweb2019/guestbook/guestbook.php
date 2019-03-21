@@ -26,8 +26,8 @@
             </td>
         </tr>
         <tr><td>방명록 내용<br><textarea placeholder="내용을 입력해주세요." style='font-size:9pt;border:1px solid'
-                          name="content"style=background-image:url('img/bbs_text_line.gif'); cols=50 rows=3
-                          wrap=virtual></textarea>&nbsp;&nbsp;<input type=image src=img/regist.gif></td></tr>
+                                    name="content"style=background-image:url('img/bbs_text_line.gif'); cols=50 rows=3
+                                    wrap=virtual></textarea>&nbsp;&nbsp;<input type=image src=img/regist.gif></td></tr>
     </form>
 </table>
 <table width=776 border=0 cellspacing=0 cellpadding=0 align=center>
