@@ -2,22 +2,12 @@
    session_start();
 
    if(!$subject) {
-     echo("
-	   <script>
-	     window.alert('제목을 입력하세요.')
-	     history.go(-1)
-	   </script>
-	 ");
+     echo("<script>window.alert('제목을 입력하세요.'); history.go(-1)</script>");
 	 exit;
    }
    
    if(!$content) {
-     echo("
-	   <script>
-	     window.alert('내용을 입력하세요.')
-	     history.go(-1)
-	   </script>
-	 ");
+     echo("<script>window.alert('내용을 입력하세요.'); history.go(-1)</script>");
 	 exit;
    }
    
