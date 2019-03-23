@@ -1,4 +1,4 @@
-<? 
+<?php
        $str1 = substr ("abcdef", 1);    // "bcdef" 을 반환한다.
        $str2 = substr ("abcdef", 2, 3); // "cde" 을 반환한다.
        /* 만약 start가 음수라면, 반환되는 문자열은 string의 끝에서부터 
