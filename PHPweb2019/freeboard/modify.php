@@ -35,7 +35,7 @@ $ip = $_SERVER["REMOTE_ADDR"];
 
 
 $sql = "update freeboard set name='$name', subject='$subject', ";
-$sql .= "content='$content', passwd='$passwd' where num=$num";
+$sql .= "content='$content', passwd='$passwd' where num='$num'";
 
 $result = $connect->query($sql) or die($this->_connect->error);
 $connect->close();
