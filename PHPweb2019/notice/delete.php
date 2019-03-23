@@ -1,15 +1,19 @@
-<?
-   session_start();
+<?php
+session_start();
 
-   if ($userid == "admin")  
-   {
-      include "../dbconn.php";
+$num = $_REQUEST['num'];
 
-      $sql = "delete from notice_board where num = $num";
-      mysql_query($sql, $connect);
-      mysql_close();
-   }
+$userid = $_SESSION['userid'];
 
-   Header("Location:list.php?page=$page");
+if ($userid == "admin")
+{
+   include "../dbconn.php";
+
+   $sql = "delete from notice_board where num = '$num'";
+   $result = $connect->query($sql) or die($this->_connect->error);
+   $connect->close();
+}
+
+Header("Location:list.php?page=$page");
 ?>
 
