@@ -1,42 +1,36 @@
-<?
-   session_start();
+<?php
+include "../dbconn.php";
 
-   if ($userid=="admin")
-   {
-      if(!$subject) {
-        echo("
-	   <script>
-	     window.alert('Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.')
-	     history.go(-1)
-	   </script>
-	 ");
-	 exit;
-      }
-   
-      if(!$content) {
-        echo("
-	   <script>
-	     window.alert('³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.')
-	     history.go(-1)
-	   </script>
-	 ");
-	 exit;
-      }
-   
-      include "../dbconn.php";
+session_start();
 
-      $regist_day = date("Y-m-d (H:i)");  // ÇöÀçÀÇ '³â-¿ù-ÀÏ-½Ã-ºĞ'À» ÀúÀå
-      $ip = $REMOTE_ADDR;         // ¹æ¹®ÀÚÀÇ IP ÁÖ¼Ò¸¦ ÀúÀå
-   
+$num = $_REQUEST['num'];
+$page = $_REQUEST['page'];
 
-      $sql = "update notice_board set subject='$subject', ";
-      $sql .= "content='$content' where num=$num";
-   
-      mysql_query($sql, $connect);
-      mysql_close();
+$subject = $_REQUEST['subject'];
+$content = $_REQUEST['content'];
+
+if ($userid=="admin")
+{
+   if(!$subject) {
+      echo("<script>window.alert('ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.'); history.go(-1)</script>");
+      exit;
+   }
+
+   if(!$content) {
+      echo("<script>window.alert('ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.'); history.go(-1)</script>");
+      exit;
+   }
+
+   $regist_day = date("Y-m-d (H:i)");  // í˜„ì¬ì˜ 'ë…„-ì›”-ì¼-ì‹œ-ë¶„'ì„ ì €ì¥
+   $ip = $_SERVER["REMOTE_ADDR"];       // ë°©ë¬¸ìì˜ IP ì£¼ì†Œë¥¼ ì €ì¥
+
+   $sql = "update notice_board set subject='$subject', ";
+   $sql .= "content='$content' where num='$num'";
+
+   $result = $connect->query($sql) or die($this->_connect->error);
+   $connect->close();
 }
-   
-      Header("Location:list.php?num=$num&page=$page");  // list.php ·Î ÀÌµ¿
+Header("Location:list.php?num=$num&page=$page");  // list.php ë¡œ ì´ë™
 ?>
 
    
