@@ -1,43 +1,48 @@
-<?
-   session_start();
+<?php
+session_start();
 
-   if(!$userid) {
-     echo("
+$userid = $_SESSION['userid'];
+$name = $_SESSION['username'];
+
+$content = $_REQUEST['content'];
+$num = $_REQUEST['num'];
+
+if(!$userid) {
+   echo("
 	   <script>
-	     window.alert('·Î±×ÀÎ ÈÄ ÀÌ¿ëÇÏ¼¼¿ä.')
+	     window.alert('ë¡œê·¸ì¸ í›„ ì´ìš©í•˜ì„¸ìš”.')
 	     history.go(-1)
 	   </script>
 	 ");
-	 exit;
-   }
-   
-   if(!$content) {
-     echo("
+   exit;
+}
+
+if(!$content) {
+   echo("
 	   <script>
-	     window.alert('³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.')
+	     window.alert('ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.')
 	     history.go(-1)
 	   </script>
 	 ");
-	 exit;
-   }
-   
-   include "../dbconn.php";       // dconn.php ÆÄÀÏÀ» ºÒ·¯¿È
+   exit;
+}
 
-   $id = $userid;
-   $name = $username;
+include "../dbconn.php";       // dconn.php íŒŒì¼ì„ ë¶ˆëŸ¬ì˜´
 
-   $regist_day = date("Y-m-d (H:i)");  // ÇöÀçÀÇ '³â-¿ù-ÀÏ-½Ã-ºĞ'À» ÀúÀå
-   $ip = $REMOTE_ADDR;         // ¹æ¹®ÀÚÀÇ IP ÁÖ¼Ò¸¦ ÀúÀå
+$id = $userid;
 
-   // ·¹ÄÚµå »ğÀÔ ¸í·É
-   $sql = "insert into notice_ripple(parent, id, name, content, regist_day, ip) ";
-   $sql .= "values('$num', '$id', '$name', '$content', '$regist_day', '$ip')";    
-   
-   mysql_query($sql, $connect);  // $sql ¿¡ ÀúÀåµÈ ¸í·É ½ÇÇà
+$regist_day = date("Y-m-d (H:i)");  // í˜„ì¬ì˜ 'ë…„-ì›”-ì¼-ì‹œ-ë¶„'ì„ ì €ì¥
+$ip = $REMOTE_ADDR;         // ë°©ë¬¸ìì˜ IP ì£¼ì†Œë¥¼ ì €ì¥
 
-   mysql_close();                // DB ¿¬°á ²÷±â
-   
-   Header("Location:view.php?num=$num");  // view.php ·Î ÀÌµ¿ÇÕ´Ï´Ù.
+// ë ˆì½”ë“œ ì‚½ì… ëª…ë ¹
+$sql = "insert into notice_ripple(parent, id, name, content, regist_day, ip) ";
+$sql .= "values('$num', '$id', '$name', '$content', '$regist_day', '$ip')";
+
+$result = $connect->query($sql) or die($this->_connect->error);
+
+$connect->close();            // DB ì—°ê²° ëŠê¸°
+
+Header("Location:view.php?num=$num");  // view.php ë¡œ ì´ë™í•©ë‹ˆë‹¤.
 ?>
 
    
