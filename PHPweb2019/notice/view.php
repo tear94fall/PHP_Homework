@@ -3,6 +3,9 @@ session_start();
 
 $userid = $_SESSION['userid'];
 $page = $_REQUEST['page'];
+
+$username = $_SESSION['username'];
+
 ?>
 <html>
 <head>
@@ -35,7 +38,7 @@ $page = $_REQUEST['page'];
 
     $content = str_replace("\n", "<br>", $row['content']);
     $content = str_replace(" ", "&nbsp;", $content);
-    $subject = str_replace(" ", "&nbsp;", $row[subject]);
+    $subject = str_replace(" ", "&nbsp;", $row['subject']);
 
     $hit = $row['hit'];
     $hit++;
@@ -54,7 +57,7 @@ $page = $_REQUEST['page'];
                 <tr height=5 ><td colspan=2></td></tr>
                 <tr>
                     <td width=20></td>
-                    <td><b>글쓴이 : <?php echo $row[name] ?></b>&nbsp;&nbsp;
+                    <td><b>글쓴이 : <?php echo $row['name'] ?></b>&nbsp;&nbsp;
                         <?php echo $row[regist_day] ?>
                     </td>
                 </tr>
@@ -95,13 +98,13 @@ $page = $_REQUEST['page'];
                     echo "<table width=100% cellpadding=0><tr height=20><td width=10% align=center>&nbsp;$ripple_name&nbsp; </td><td width=80%% align=left>&nbsp;$ripple_content</td><td width=10% align=left>&nbsp;$ripple_day&nbsp;";
                     if ($userid == $ripple_id or $userid=="admin")
                     {
-                        echo "<a href='delete_ripple.php?num=$num&ripple_num=$ripple_num'>D";
+                        echo "<a href='delete_ripple.php?num=$num&ripple_num=$ripple_num'>삭제";
                     }
                     echo "</td></tr><tr height=1 bgcolor=#5AB2C8><td colspan=3></td></tr></table>";
                 }
             }
 
-            mysql_close();
+            $connect->close();
             ?>
         </td>
     </tr>
@@ -109,8 +112,8 @@ $page = $_REQUEST['page'];
 </table>
 
 <?php
-echo "<form method=post action='insert_ripple.php?num=$num'><table align=center border=0 cellspacing=0 cellpadding=0 width=766><tr><td colspan=2>&nbsp;&nbsp;&nbsp;&nbsp;이름  : $username</td></tr><tr height=5><td colspan=2> </td></tr><tr><td><textarea style='font-size:9pt;border:1px solid' name='content'
-                 style=background-image:url('img/bbs_text_line.gif'); cols=110 rows=4
+echo "<form method=post action='insert_ripple.php?num=$num'><table align=center border=0 cellspacing=0 cellpadding=0 width=766><tr><td colspan=2><br>[방명록을 입력해주세요]<br>이름  : $username</td></tr><tr height=5><td colspan=2> </td></tr><tr><td><textarea style='font-size:9pt;border:1px solid' name='content'
+                 style=background-image:url('img/bbs_text_line.gif'); cols=100 rows=3
                  wrap=virtual></textarea></td><td align=right><input type=image src='img/regist.gif'></td></tr><tr height=5><td colspan=2> </td></tr></table></form>";
 ?>
 <table align=center border=0 cellspacing=0 cellpadding=0 width=766>
@@ -126,7 +129,7 @@ echo "<form method=post action='insert_ripple.php?num=$num'><table align=center 
                 echo "<a href='modify_form.php?num=$num&page=$page'><img src='img/i_edit.gif' border=0>&nbsp;</a><a href='delete.php?num=$num&page=$page'><img src='img/i_del.gif' border=0>&nbsp;</a>";
             }
             ?>
-            <a href="list.php?page=<? echo $page ?>"><img src='img/i_list.gif' border=0>
+            <a href="list.php?page=<?php echo $page ?>"><img src='img/i_list.gif' border=0>
             </a></td>
     </tr>
 </table>
