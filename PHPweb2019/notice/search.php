@@ -74,12 +74,12 @@ $row = $result->fetch_array();
 
                     $sql = "select * from notice_ripple where parent = '$row[num]'";
 
-                    $result2 = mysqli_query($sql, $connect);
+                    $result2 = $connect->query($sql) or die($this->_connect->error);
                     $num_ripple = mysqli_num_rows($result2);
 
                     // 레코드 화면에 출력하기
                     echo "<tr height=25><td align=center>$number</td><td><img src='img/record_id.gif' border=0><a href='view.php?num=$row[num]&page=$page'>$row[subject]";
-                    if ($num_ripple) echo " <font color=blue>[$num_ripple]</font>";
+                    if ($num_ripple>0) echo " <font color=blue>[$num_ripple]</font>";
                     echo "</a></td><td align=center>$day</td><td align=center>$row[hit]</td><td align=center>$row[name] </td></tr><tr bgcolor='#CCCCCC' height=1> <td colspan='5'></td></tr>";
                     $number--;
                 }

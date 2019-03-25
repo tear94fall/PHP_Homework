@@ -1,31 +1,33 @@
-<?
-   session_start();
+<?php
+session_start();
 
-   include "../dbconn.php";
-   
-   $sql = "select id from qna_board where num = $num";   
-   $result = mysql_query($sql, $connect);
+$num = $_REQUEST['num'];
+$userid = $_SESSION['userid'];
 
-   $row = mysql_fetch_array($result);
+include "../dbconn.php";
 
-   if ($userid != "admin" and $userid != $row[id])   // ºñ¹Ğ¹øÈ£°¡ ¸ÂÀ¸¸é 
-   {
-     echo("
+$sql = "select id from qna_board where num = $num";
+$result = $connect->query($sql) or die($this->_connect->error);
+$row = $result->fetch_array();
+
+if ($userid != "admin" and $userid != $row[id])   // ë¹„ë°€ë²ˆí˜¸ê°€ ë§ìœ¼ë©´
+{
+   echo("
 	   <script>
-                 window.alert('»èÁ¦ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.')
+                 window.alert('ì‚­ì œ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.')
                  history.go(-1)
 	   </script>
           ");
-      exit;
-   }
-   else
-   {
-      $sql = "delete from qna_board where num = $num";
-      mysql_query($sql, $connect);
-   }
+   exit;
+}
+else
+{
+   $sql = "delete from qna_board where num = $num";
+   $result = $connect->query($sql) or die($this->_connect->error);
+}
 
-   mysql_close();
+$connect->close();
 
-   Header("Location:list.php?page=$page");
+Header("Location:list.php?page=$page");
 ?>
 

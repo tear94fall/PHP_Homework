@@ -44,7 +44,7 @@ else
 
         session_start();
         $_SESSION['userid'] = $userid;
-        $_SESSION['useername'] = $username;
+        $_SESSION['username'] = $username;
         //session_register(userid);
         //session_register(username);
 

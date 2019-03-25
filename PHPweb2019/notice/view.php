@@ -112,7 +112,7 @@ $username = $_SESSION['username'];
 </table>
 
 <?php
-echo "<form method=post action='insert_ripple.php?num=$num'><table align=center border=0 cellspacing=0 cellpadding=0 width=766><tr><td colspan=2><br>[방명록을 입력해주세요]<br>이름  : $username</td></tr><tr height=5><td colspan=2> </td></tr><tr><td><textarea style='font-size:9pt;border:1px solid' name='content'
+echo "<form method=post action='insert_ripple.php?num=$num'><table align=center border=0 cellspacing=0 cellpadding=0 width=766><tr><td colspan=2><br>[댓글을 입력해주세요]<br>이름  : $username</td></tr><tr height=5><td colspan=2> </td></tr><tr><td><textarea style='font-size:9pt;border:1px solid' name='content'
                  style=background-image:url('img/bbs_text_line.gif'); cols=100 rows=3
                  wrap=virtual></textarea></td><td align=right><input type=image src='img/regist.gif'></td></tr><tr height=5><td colspan=2> </td></tr></table></form>";
 ?>

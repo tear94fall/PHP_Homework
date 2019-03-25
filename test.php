@@ -31,10 +31,10 @@ if(! $connect->set_charset($mysql_charset))// (php >= 5.0.5)
 $number = 2;
 
 //3. 쿼리 생성
-$query = "select * from students where number = '$number'";
+$sql = "select * from students where number = '$number'";
 
 //4. 쿼리 실행
-$result = $connect->query($query) or die($this->_connect->error);
+$result = $connect->query($sql) or die($this->_connect->error);
 $row = $result->fetch_array();
 
 //5. 결과 처리

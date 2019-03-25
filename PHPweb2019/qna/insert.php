@@ -1,93 +1,103 @@
-<?
-   session_start();
+<?php
+session_start();
+$subject = $_REQUEST['subject'];
+$content = $_REQUEST['content'];
+$page = $_REQUEST['page'];
+$num = $_REQUEST['num'];
 
-   if(!$userid) {  
-     echo("
+$userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
+
+if(!$userid) {
+   echo("
 	   <script>
-	     window.alert('·Î±×ÀÎ ÈÄ »ç¿ëÇÏ¼¼¿ä.')
+	     window.alert('ë¡œê·¸ì¸ í›„ ì‚¬ìš©í•˜ì„¸ìš”.')
 	     history.go(-1)
 	   </script>
 	 ");
-	 exit;
-   }
-   
-   if(!$subject) {
-     echo("
+   exit;
+}
+
+if(!$subject) {
+   echo("
 	   <script>
-	     window.alert('Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.')
+	     window.alert('ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.')
 	     history.go(-1)
 	   </script>
 	 ");
-	 exit;
-   }
-   
-   if(!$content) {
-     echo("
+   exit;
+}
+
+if(!$content) {
+   echo("
 	   <script>
-	     window.alert('³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.')
+	     window.alert('ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.')
 	     history.go(-1)
 	   </script>
 	 ");
-	 exit;
-   }
-    
-   include "../dbconn.php";
+   exit;
+}
 
-   $regist_day = date("Y-m-d (H:i)");  // ÇöÀçÀÇ '³â-¿ù-ÀÏ-½Ã-ºĞ'À» ÀúÀå
-   $ip = $REMOTE_ADDR;         // ¹æ¹®ÀÚÀÇ IP ÁÖ¼Ò¸¦ ÀúÀå
+include "../dbconn.php";
 
-   if (!$num) // $num ÀÌ 0 ÀÌ¸é ¿ø±Û, 1ÀÌ¸é ´äº¯ ±Û
-   {    
-      $depth = 0;   // depth, ord ¸¦ 0À¸·Î ÃÊ±âÈ­
-      $ord = 0;
+$regist_day = date("Y-m-d (H:i)");  // í˜„ì¬ì˜ 'ë…„-ì›”-ì¼-ì‹œ-ë¶„'ì„ ì €ì¥
+$ip = $_SERVER["REMOTE_ADDR"];      // ë°©ë¬¸ìì˜ IP ì£¼ì†Œë¥¼ ì €ì¥í•©ë‹ˆë‹¤.
 
-      // ·¹ÄÚµå »ğÀÔ(group_num Á¦¿Ü)
-      $sql = "insert into qna_board(depth, ord, id, name, subject,";
-      $sql .= "content, regist_day, hit, ip) ";
-      $sql .= "values($depth, $ord, '$userid', '$username', '$subject',";
-      $sql .= "'$content', '$regist_day', 0, '$ip')";    
-      mysql_query($sql, $connect);  // $sql ¿¡ ÀúÀåµÈ ¸í·É ½ÇÇà
 
-      // ÃÖ±Ù auto_increment ÇÊµå(num) °ª °¡Á®¿À±â
-      $sql = "select last_insert_id()"; 
-      $result = mysql_query($sql, $connect);
-      $row = mysql_fetch_array($result);
-      $auto_num = $row[0]; 
+if (!$num) // $num ì´ 0 ì´ë©´ ì›ê¸€, 1ì´ë©´ ë‹µë³€ ê¸€
+{
+   $depth = 0;   // depth, ord ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+   $ord = 0;
 
-      // group_num °ª ¾÷µ¥ÀÌÆ® 
-      $sql = "update qna_board set group_num = $auto_num where num=$auto_num";
-      mysql_query($sql, $connect);
-   }
-    else
-   {
-      // ºÎ¸ğ ±Û °¡Á®¿À±â
-      $sql = "select * from qna_board where num = $num";
-      $result = mysql_query($sql, $connect);
-      $row = mysql_fetch_array($result);
+   // ë ˆì½”ë“œ ì‚½ì…(group_num ì œì™¸)
+   $sql = "insert into qna_board(group_num, depth, ord, id, name, subject,";
+   $sql .= "content, regist_day, hit, ip) ";
+   $sql .= "values(0, $depth, $ord, '$userid', '$username', '$subject',";
+   $sql .= "'$content', '$regist_day', 0, '$ip')";
+   $result = $connect->query($sql) or die($this->_connect->error);
 
-      // ºÎ¸ğ ±Û·Î ºÎÅÍ group_num, depth, ord °ª ¼³Á¤
-      $group_num = $row[group_num];
-      $depth = $row[depth] + 1;
-      $ord = $row[ord] + 1;
 
-      // ÇØ´ç ±×·ì¿¡¼­ ord °¡ ºÎ¸ğ±ÛÀÇ ord($row[ord]) º¸´Ù Å« °æ¿ì¿£
-      // ord °ª 1 Áõ°¡ ½ÃÅ´
-      $sql = "update qna_board set ord = ord + 1 where group_num = $row[group_num] 
+   // ìµœê·¼ auto_increment í•„ë“œ(num) ê°’ ê°€ì ¸ì˜¤ê¸°
+   $sql = "select last_insert_id()";
+   $result = $connect->query($sql) or die($this->_connect->error);
+   $row = $result->fetch_array();
+   $auto_num = $row[0];
+
+
+   // group_num ê°’ ì—…ë°ì´íŠ¸
+   $sql = "update qna_board set group_num = $auto_num where num=$auto_num";
+   $result = $connect->query($sql) or die($this->_connect->error);
+}
+else
+{
+   // ë¶€ëª¨ ê¸€ ê°€ì ¸ì˜¤ê¸°
+   $sql = "select * from qna_board where num = $num";
+   $result = $connect->query($sql) or die($this->_connect->error);
+   $row = $result->fetch_array();
+
+   // ë¶€ëª¨ ê¸€ë¡œ ë¶€í„° group_num, depth, ord ê°’ ì„¤ì •
+   $group_num = $row[group_num];
+   $depth = $row[depth] + 1;
+   $ord = $row[ord] + 1;
+
+   // í•´ë‹¹ ê·¸ë£¹ì—ì„œ ord ê°€ ë¶€ëª¨ê¸€ì˜ ord($row[ord]) ë³´ë‹¤ í° ê²½ìš°ì—”
+   // ord ê°’ 1 ì¦ê°€ ì‹œí‚´
+   $sql = "update qna_board set ord = ord + 1 where group_num = $row[group_num] 
               and ord > $row[ord]";
-      mysql_query($sql, $connect);  
+   $result = $connect->query($sql) or die($this->_connect->error);
 
-      // ·¹ÄÚµå »ğÀÔ
-      $sql = "insert into qna_board(group_num, depth, ord, id, name, subject,";
-      $sql .= "content, regist_day, hit, ip) ";
-      $sql .= "values($group_num, $depth, $ord, '$userid', '$username', '$subject',";
-      $sql .= "'$content', '$regist_day', 0, '$ip')";    
+   // ë ˆì½”ë“œ ì‚½ì…
+   $sql = "insert into qna_board(group_num, depth, ord, id, name, subject,";
+   $sql .= "content, regist_day, hit, ip) ";
+   $sql .= "values($group_num, $depth, $ord, '$userid', '$username', '$subject',";
+   $sql .= "'$content', '$regist_day', 0, '$ip')";
 
-      mysql_query($sql, $connect);  // $sql ¿¡ ÀúÀåµÈ ¸í·É ½ÇÇà
+   $result = $connect->query($sql) or die($this->_connect->error);
 
-   }
-      mysql_close();                // DB ¿¬°á ²÷±â
-   
-      Header("Location:list.php?page=$page");  // list.php ·Î ÀÌµ¿ÇÕ´Ï´Ù.
+}
+$connect->close();
+
+Header("Location:list.php?page=$page");  // list.php ë¡œ ì´ë™í•©ë‹ˆë‹¤.
 ?>
 
    

@@ -1,4 +1,4 @@
-<?
+<?php
    session_start();
 
    $scale = 5;   // 한 화면에 표시되는 글 수
@@ -25,10 +25,10 @@
         </tr>
         <tr>
           <td height=10></td>
-        <?  $total_record = mysql_num_rows($result); // 전체 글 수?>
+        <?php  $total_record = mysql_num_rows($result); // 전체 글 수?>
         <tr>
           <td align="right" colspan="5" height=20>전체 
-            <? echo $total_record; ?>건 
+            <?php echo $total_record; ?>건
           </td></tr>
         <tr>
           <td>
@@ -49,7 +49,7 @@
         <tr bgcolor="#5AB2C8"> 
           <td colspan="7" height=1></td>
         </tr>
-<?
+<?php
    // 전체 페이지 수($total_page) 계산 
    if ($total_record % $scale == 0)    
          // $total_record를 $scale로 나눈 나머지 계산 
@@ -134,7 +134,7 @@
 
         <tr height=25>
         <td colspan=7 align=center>
-<?
+<?php
    // 게시판 목록 하단에 페이지 링크 번호 출력
    for ($i=1; $i<=$total_page; $i++)
    {

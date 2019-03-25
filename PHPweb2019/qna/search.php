@@ -1,99 +1,106 @@
-<?
-   session_start();
+<?php
+session_start();
 
-   $scale = 8;   // «— »≠∏Èø° «•Ω√µ«¥¬ ±€ ºˆ
+$scale = 8;   // Ìïú ÌôîÎ©¥Ïóê ÌëúÏãúÎêòÎäî Í∏Ä Ïàò
 
-   include "../dbconn.php";
+include "../dbconn.php";
 
-   $sql = "select * from qna_board where $find like '%$search%'
+$page = $_REQUEST['page'];
+$find = $_REQUEST['find'];
+$search = $_REQUEST['search'];
+
+$sql = "select * from qna_board where $find like '%$search%'
            order by group_num desc, ord asc";
 
-   $result = mysql_query($sql, $connect);
+$result = $connect->query($sql) or die($this->_connect->error);
+$row = $result->fetch_array();
+
 ?>
 <html>
 <META http-equiv="Content-Type" content="text/html; charset=Korean">
- <head>
-  <title> :: PHP «¡∑Œ±◊∑°π÷ ¿‘πÆø° ø¿Ω≈∞Õ¿ª »Øøµ«’¥œ¥Ÿ~~ :: </title>
-  <link rel="stylesheet" href="../style.css" type="text/css">	
- </head>
+<head>
+    <title> :: PHP ÌîÑÎ°úÍ∑∏ÎûòÎ∞ç ÏûÖÎ¨∏Ïóê Ïò§Ïã†Í≤ÉÏùÑ ÌôòÏòÅÌï©ÎãàÎã§~~ :: </title>
+    <link rel="stylesheet" href="../style.css" type="text/css">
+</head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-    <table border=0 cellspacing=0 cellpdding=0 width='776' align='center'>
-        <tr>
-          <td colspan="5" height=25><img src="img/qa_title.gif"></td>
-        </tr>
-        <tr>
-          <td background="img/bbs_bg.gif"><img border="0" src="img/blank.gif" width="1" height="3"></td>
-        </tr>
-        <tr>
-          <td height=10></td>
-<?  $total_record = mysql_num_rows($result); // ¿¸√º ±€ ºˆ?>
-        <tr><td align="right" colspan="5" height=20>¿¸√º <? echo $total_record; ?>∞« 
-          </td></tr>
-        <tr>
-          <td>
+<table border=0 cellspacing=0 cellpdding=0 width='776' align='center'>
+    <tr>
+        <td colspan="5" height=25><img src="img/qa_title.gif"></td>
+    </tr>
+    <tr>
+        <td background="img/bbs_bg.gif"><img border="0" src="img/blank.gif" width="1" height="3"></td>
+    </tr>
+    <tr>
+        <td height=10></td>
+        <?php  $total_record = mysqli_num_rows($result); // Ï†ÑÏ≤¥ Í∏Ä Ïàò?>
+    <tr><td align="right" colspan="5" height=20>Ï†ÑÏ≤¥ <?php echo $total_record; ?>Í±¥
+        </td></tr>
+    <tr>
+        <td>
 
-    <table border=0 cellspacing=0 cellpdding=0 width='100%' class="txt">
-        <tr bgcolor="#5AB2C8"> 
-          <td colspan="5" height=1></td>
-        </tr>
-        <tr bgcolor="#D2EAF0" height=25> 
-          <td width="50" align="center"><strong>π¯»£</strong></td>
-          <td width="450" align=center><strong>¡¶∏Ò</strong></td>
-          <td width="145" align=center><strong>¿€º∫¿œ</strong></td>
-          <td width="55" align=center><strong>¡∂»∏</strong></td>
-          <td width="76" align=center><strong>±€æ¥¿Ã</strong></td>
-        </tr>
-        <tr bgcolor="#5AB2C8"> 
-          <td colspan="5" height=1></td>
-        </tr>
-  
-<?
-   // ¿¸√º ∆‰¿Ã¡ˆ ºˆ($total_page) ∞ËªÍ 
-   if ($total_record % $scale == 0)     // $total_record∏¶ $scale∑Œ ≥™¥´ ≥™∏”¡ˆ ∞ËªÍ 
-      $total_page = floor($total_record/$scale);     // ≥™∏”¡ˆ∞° 0¿œ ∂ß 
-   else
-      $total_page = floor($total_record/$scale) + 1; // ≥™∏”¡ˆ∞° 0¿Ã æ∆¥“ ∂ß
- 
-   if (!$page)                 // ∆‰¿Ã¡ˆπ¯»£($page)∞° 0 ¿œ ∂ß
-       $page = 1;              // ∆‰¿Ã¡ˆ π¯»£∏¶ 1∑Œ √ ±‚»≠
- 
-   $start = ($page - 1) * $scale;      // «•Ω√«“ ∆‰¿Ã¡ˆ($page)ø° µ˚∂Û $start ∞ËªÍ  
+            <table border=0 cellspacing=0 cellpdding=0 width='100%' class="txt">
+                <tr bgcolor="#5AB2C8">
+                    <td colspan="5" height=1></td>
+                </tr>
+                <tr bgcolor="#D2EAF0" height=25>
+                    <td width="50" align="center"><strong>Î≤àÌò∏</strong></td>
+                    <td width="450" align=center><strong>Ï†úÎ™©</strong></td>
+                    <td width="145" align=center><strong>ÏûëÏÑ±Ïùº</strong></td>
+                    <td width="55" align=center><strong>Ï°∞Ìöå</strong></td>
+                    <td width="76" align=center><strong>Í∏ÄÏì¥Ïù¥</strong></td>
+                </tr>
+                <tr bgcolor="#5AB2C8">
+                    <td colspan="5" height=1></td>
+                </tr>
 
-   $number = $total_record - $start;
+                <?php
+                // Ï†ÑÏ≤¥ ÌéòÏù¥ÏßÄ Ïàò($total_page) Í≥ÑÏÇ∞
+                if ($total_record % $scale == 0)     // $total_recordÎ•º $scaleÎ°ú ÎÇòÎàà ÎÇòÎ®∏ÏßÄ Í≥ÑÏÇ∞
+                    $total_page = floor($total_record/$scale);     // ÎÇòÎ®∏ÏßÄÍ∞Ä 0Ïùº Îïå
+                else
+                    $total_page = floor($total_record/$scale) + 1; // ÎÇòÎ®∏ÏßÄÍ∞Ä 0Ïù¥ ÏïÑÎãê Îïå
 
-   for ($i=$start; $i<$start+$scale && $i < $total_record; $i++)                    
-   {
-      mysql_data_seek($result, $i);       // ∞°¡Æø√ ∑πƒ⁄µÂ∑Œ ¿ßƒ°(∆˜¿Œ≈Õ) ¿Ãµø  
-      $row = mysql_fetch_array($result);       // «œ≥™¿« ∑πƒ⁄µÂ ∞°¡Æø¿±‚
-      
-      $day = substr($row[regist_day], 0, 10);
+                if (!$page)                 // ÌéòÏù¥ÏßÄÎ≤àÌò∏($page)Í∞Ä 0 Ïùº Îïå
+                    $page = 1;              // ÌéòÏù¥ÏßÄ Î≤àÌò∏Î•º 1Î°ú Ï¥àÍ∏∞Ìôî
 
-      $sql = "select * from qna_ripple where parent = '$row[num]'";
+                $start = ($page - 1) * $scale;      // ÌëúÏãúÌï† ÌéòÏù¥ÏßÄ($page)Ïóê Îî∞Îùº $start Í≥ÑÏÇ∞
 
-      $result2 = mysql_query($sql, $connect);
-      $num_ripple = mysql_num_rows($result2);
+                $number = $total_record - $start;
 
-      $space = "";
+                for ($i=$start; $i<$start+$scale && $i < $total_record; $i++)
+                {
+                    mysqli_data_seek($result, $i);       // Í∞ÄÏ†∏Ïò¨ Î†àÏΩîÎìúÎ°ú ÏúÑÏπò(Ìè¨Ïù∏ÌÑ∞) Ïù¥Îèô
+                    $row = $result->fetch_array();       // ÌïòÎÇòÏùò Î†àÏΩîÎìú Í∞ÄÏ†∏Ïò§Í∏∞
 
-      for ($j=0; $j<$row[depth]; $j++)
-          $space = "&nbsp;&nbsp;".$space;
+                    $day = substr($row[regist_day], 0, 10);
 
-      // ∑πƒ⁄µÂ »≠∏Èø° √‚∑¬«œ±‚
-      echo "
+                    $sql = "select * from qna_ripple where parent = '$row[num]'";
+
+                    $result2 = $connect->query($sql) or die($this->_connect->error);
+
+                    $num_ripple = mysqli_num_rows($result2);
+
+                    $space = "";
+
+                    for ($j=0; $j<$row[depth]; $j++)
+                        $space = "&nbsp;&nbsp;".$space;
+
+                    // Î†àÏΩîÎìú ÌôîÎ©¥Ïóê Ï∂úÎ†•ÌïòÍ∏∞
+                    echo "
         <tr height=25>
           <td align=center>$number</td>
           <td> $space 
            ";
-      if ($row[depth]>0)
-        echo "<img src='img/reply_head.gif' border=0>";
-      else
-        echo "<img src='img/record_id.gif' border=0>";
+                    if ($row[depth]>0)
+                        echo "<img src='img/reply_head.gif' border=0>";
+                    else
+                        echo "<img src='img/record_id.gif' border=0>";
 
-        echo "<a href='view.php?num=$row[num]&page=$page'>&nbsp;$row[subject]";
+                    echo "<a href='view.php?num=$row[num]&page=$page'>&nbsp;$row[subject]";
 
-      if ($num_ripple) echo " <font color=blue>[$num_ripple]</font>";
+                    if ($num_ripple>0) echo " <font color=blue>[$num_ripple]</font>";
 
-      echo "
+                    echo "
             </a></td>
           <td align=center>$day</td>
           <td align=center>$row[hit]</td>
@@ -103,78 +110,78 @@
           <td colspan='5'></td>
         </tr>
         ";
-       $number--;
-   } 
-?>
+                    $number--;
+                }
+                ?>
 
-        <tr> 
-          <td colspan="5" height=20></td>
-        </tr>
+                <tr>
+                    <td colspan="5" height=20></td>
+                </tr>
 
-        <tr height=25>
-          <td colspan=5 align=center>
-<?
-   // ∞‘Ω√∆« ∏Ò∑œ «œ¥‹ø° ∆‰¿Ã¡ˆ ∏µ≈© π¯»£ √‚∑¬
-   for ($i=1; $i<=$total_page; $i++)
-   {
-       if ($page == $i)     // «ˆ¿Á ∆‰¿Ã¡ˆ π¯»£ ∏µ≈© æ»«‘
-       {
-           echo "
+                <tr height=25>
+                    <td colspan=5 align=center>
+                        <?php
+                        // Í≤åÏãúÌåê Î™©Î°ù ÌïòÎã®Ïóê ÌéòÏù¥ÏßÄ ÎßÅÌÅ¨ Î≤àÌò∏ Ï∂úÎ†•
+                        for ($i=1; $i<=$total_page; $i++)
+                        {
+                            if ($page == $i)     // ÌòÑÏû¨ ÌéòÏù¥ÏßÄ Î≤àÌò∏ ÎßÅÌÅ¨ ÏïàÌï®
+                            {
+                                echo "
                 <font color='4C5317'><b>[$i]</b></font>
                 ";
-       }
-       else
-       { 
-           echo "
+                            }
+                            else
+                            {
+                                echo "
                 <a href='search.php?find=$find&search=$search&page=$i'>
                 <font color='4C5317'>[$i]</font></a>
                 ";
-       }      
-   }
-?>
-          </td>
-         </tr>
-         <tr bgcolor="#CCCCCC" height=1> 
-           <td colspan="5"></td>
-         </tr>
-    </table>
+                            }
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr bgcolor="#CCCCCC" height=1>
+                    <td colspan="5"></td>
+                </tr>
+            </table>
         </td>
-        </tr>      
-    </table>
+    </tr>
+</table>
 
-    <table width=766 align=center border=0 cellpadding=0 cellspacing=0
-                 bgcolor="#D2EAF0">
-        <tr height=5>
-          <td></td>
-        </tr>
+<table width=766 align=center border=0 cellpadding=0 cellspacing=0
+       bgcolor="#D2EAF0">
+    <tr height=5>
+        <td></td>
+    </tr>
 
-   <form name=searchForm method=post action="search.php">
-         <tr>
-           <td>&nbsp;&nbsp;
+    <form name=searchForm method=post action="search.php">
+        <tr>
+            <td>&nbsp;&nbsp;
                 <select name="find" class="txt">
-                <option value="subject">¡¶∏Òø°º≠</option>
-                <option value="content">∫ªπÆø°º≠</option>
-                <option value="name">±€æ¥¿Ãø°º≠</option>
+                    <option value="subject">Ï†úÎ™©ÏóêÏÑú</option>
+                    <option value="content">Î≥∏Î¨∏ÏóêÏÑú</option>
+                    <option value="name">Í∏ÄÏì¥Ïù¥ÏóêÏÑú</option>
                 </select>
 
                 <input type="text" name="search" size=10>
                 <input type="image" src="img/i_search.gif" align=absmiddle border=0>
-          </td>
-          <td align=right>
-            <a href='write_form.php'><img src='img/i_write.gif' align=absmiddle
-                                   border=0></a>
-            &nbsp;<a href="list.php"><img src="img/i_list.gif" border=0></a>
-            &nbsp;</td>
+            </td>
+            <td align=right>
+                <a href='write_form.php'><img src='img/i_write.gif' align=absmiddle
+                                              border=0></a>
+                &nbsp;<a href="list.php"><img src="img/i_list.gif" border=0></a>
+                &nbsp;</td>
         </tr>
-  </form>
-        <tr height=5>
-          <td></td>
-        </tr>
-        <tr bgcolor="#5AB2C8" height=1>
-          <td colspan=2></td>
-        </tr>
-    </table>
-   <!-- ∞Àªˆ«œ±‚ ≥° -->
+    </form>
+    <tr height=5>
+        <td></td>
+    </tr>
+    <tr bgcolor="#5AB2C8" height=1>
+        <td colspan=2></td>
+    </tr>
+</table>
+<!-- Í≤ÄÏÉâÌïòÍ∏∞ ÎÅù -->
 
 </body>
 </html>

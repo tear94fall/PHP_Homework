@@ -1,55 +1,46 @@
-<?
-   session_start();
+<?php
+session_start();
 
-   include "../dbconn.php";
+$subject = $_REQUEST['subject'];
+$content = $_REQUEST['content'];
+$page = $_REQUEST['page'];
+$num = $_REQUEST['num'];
 
-   $sql = "select id from qna_board where num = $num";
-   $result = mysql_query($sql, $connect);
+$userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
 
-   $row = mysql_fetch_array($result);
+include "../dbconn.php";
 
-   if ($userid != "admin" and $userid != $row[id])   // ºñ¹Ğ¹øÈ£°¡ ¸ÂÀ¸¸é
-     {
-      echo("
-	   <script>
-                 window.alert('¼öÁ¤ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.')
-                 history.go(-1)
-               </script>
-            ");
-        exit;
-     }
+$sql = "select id from qna_board where num = $num";
+$result = $connect->query($sql) or die($this->_connect->error);
+$row = $result->fetch_array();
 
-   if(!$subject) {
-      echo("
-	   <script>
-	     window.alert('Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.')
-	     history.go(-1)
-	   </script>
-	 ");
-	 exit;
-      }
-   
-   if(!$content) {
-      echo("
-	   <script>
-	     window.alert('³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.')
-	     history.go(-1)
-	   </script>
-	 ");
-	 exit;
-      }
-   
-   $regist_day = date("Y-m-d (H:i)");  // ÇöÀçÀÇ '³â-¿ù-ÀÏ-½Ã-ºĞ'À» ÀúÀå
-   $ip = $REMOTE_ADDR;         // ¹æ¹®ÀÚÀÇ IP ÁÖ¼Ò¸¦ ÀúÀå
-   
+if ($userid != "admin" and $userid != $row[id])   // ë¹„ë°€ë²ˆí˜¸ê°€ ë§ìœ¼ë©´
+{
+   echo("<script>window.alert('ìˆ˜ì • ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.'); history.go(-1)</script>");
+   exit;
+}
 
-   $sql = "update qna_board set subject='$subject', ";
-   $sql .= "content='$content' where num=$num";
-   
-   mysql_query($sql, $connect);
-   mysql_close();
-   
-   Header("Location:list.php?page=$page");  // list.php ·Î ÀÌµ¿
+if(!$subject) {
+   echo("<script>window.alert('ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.'); history.go(-1)</script>");
+   exit;
+}
+
+if(!$content) {
+   echo("<script>window.alert('ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.'); history.go(-1)</script>");
+   exit;
+}
+
+$regist_day = date("Y-m-d (H:i)");  // í˜„ì¬ì˜ 'ë…„-ì›”-ì¼-ì‹œ-ë¶„'ì„ ì €ì¥
+$ip = $_SERVER["REMOTE_ADDR"];        // ë°©ë¬¸ìì˜ IP ì£¼ì†Œë¥¼ ì €ì¥
+
+
+$sql = "update qna_board set subject='$subject', ";
+$sql .= "content='$content' where num=$num";
+
+$result = $connect->query($sql) or die($this->_connect->error);
+
+Header("Location:list.php?num=$num&page=$page");  // list.php ë¡œ ì´ë™
 ?>
 
    

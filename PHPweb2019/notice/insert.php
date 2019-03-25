@@ -29,5 +29,5 @@ $result = $connect->query($sql) or die($this->_connect->error);
 
 $connect->close();            // DB 연결 끊기
 
-Header("Location:list.php");  // list.php 로 이동합니다.
+Header("Location:list.php?num=$num&page=$page");  // list.php 로 이동합니다.
 ?>

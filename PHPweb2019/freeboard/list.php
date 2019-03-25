@@ -123,7 +123,7 @@ $result = $connect->query($sql) or die($this->_connect->error);
                 </select>
 
                 <input type="text" name="search" size=10>
-                <input type="image" src="img/i_search.gif" border=0>
+                <input type="image" src="img/i_search.gif" align=absmiddle border=0>
             </td>
             <td align=right>
                 <a href="write_form.php">

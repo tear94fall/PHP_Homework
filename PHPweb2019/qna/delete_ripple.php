@@ -1,10 +1,13 @@
-<?
-   include "../dbconn.php";
+<?php
+include "../dbconn.php";
 
-   $sql = "delete from qna_ripple where num = $ripple_num";
-   mysql_query($sql, $connect);
-   Header("Location:view.php?num=$num");
-   mysql_close();
+$ripple_num = $_REQUEST['ripple_num'];
+$num = $_REQUEST['num'];
+
+$sql = "delete from qna_ripple where num = $ripple_num";
+$result = $connect->query($sql) or die($this->_connect->error);
+Header("Location:view.php?num=$num");
+$connect->close();
 ?>
 
 
