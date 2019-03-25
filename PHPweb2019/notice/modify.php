@@ -10,7 +10,7 @@ $page = $_REQUEST['page'];
 $subject = $_REQUEST['subject'];
 $content = $_REQUEST['content'];
 
-if ($userid=="admin")
+if ($userid=="admin")      /*이부분에서 작동을 안했음*/
 {
    if(!$subject) {
       echo("<script>window.alert('제목을 입력하세요.'); history.go(-1)</script>");
