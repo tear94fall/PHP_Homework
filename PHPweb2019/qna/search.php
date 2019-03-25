@@ -157,7 +157,7 @@ $row = $result->fetch_array();
 
     <form name=searchForm method=post action="search.php">
         <tr>
-            <td>&nbsp;&nbsp;
+            <td>
                 <select name="find" class="txt">
                     <option value="subject">제목에서</option>
                     <option value="content">본문에서</option>
@@ -165,13 +165,13 @@ $row = $result->fetch_array();
                 </select>
 
                 <input type="text" name="search" size=10>
-                <input type="image" src="img/i_search.gif" align=absmiddle border=0>
+                <input type="image" src="img/i_search.gif" border=0>
             </td>
             <td align=right>
-                <a href='write_form.php'><img src='img/i_write.gif' align=absmiddle
+                <a href='write_form.php'><img src='img/i_write.gif'
                                               border=0></a>
-                &nbsp;<a href="list.php"><img src="img/i_list.gif" border=0></a>
-                &nbsp;</td>
+                <a href="list.php"><img src="img/i_list.gif" border=0></a>
+                </td>
         </tr>
     </form>
     <tr height=5>

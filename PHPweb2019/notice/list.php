@@ -115,7 +115,6 @@ $result = $connect->query($sql) or die($this->_connect->error);
     <tr height=5>
         <td></td>
     </tr>
-
     <form name=searchForm method=post action="search.php">
         <tr>
             <td>
@@ -125,7 +124,7 @@ $result = $connect->query($sql) or die($this->_connect->error);
                     <option value="name">글쓴이에서</option>
                 </select>
                 <input type="text" name="search" size=10>
-                <input type="image" src="img/i_search.gif" align=absmiddle border=0>
+                <input type="image" src="img/i_search.gif" border=0>
             </td>
             <td align=right>
                 <?php
