@@ -108,7 +108,7 @@ else
                     </tr>
                 </table>
             </td>
-            </tr>
+            </table>
     </form>
     </table>
     </body>
