@@ -1,7 +1,17 @@
 <?php
+/*
+	@ Date : 2019.03.19
+	@ Class : 서버 보안실무
+	@ Author : 임준섭
+	@ Brief : 기존 php5 코드를 php7으로 변환, 작동하지 않는 코드 모두 작동되도록 수정
+	@ Warning : php7, mysql8.0, apache24
+*/
+
 session_start();
+// session_destory();
 
 $userid = $_SESSION['userid'];
+
 ?>
 <html>
 <head>
