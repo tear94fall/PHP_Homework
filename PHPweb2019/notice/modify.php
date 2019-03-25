@@ -3,9 +3,10 @@ include "../dbconn.php";
 
 session_start();
 
+$userid = $_SESSION['userid'];
+
 $num = $_REQUEST['num'];
 $page = $_REQUEST['page'];
-
 $subject = $_REQUEST['subject'];
 $content = $_REQUEST['content'];
 
@@ -29,7 +30,11 @@ if ($userid=="admin")
 
    $result = $connect->query($sql) or die($this->_connect->error);
    $connect->close();
+}else{
+   echo("<script>window.alert('관리자 계정이 아닙니다.'); history.go(-1)</script>");
+   exit;
 }
+
 Header("Location:list.php?num=$num&page=$page");  // list.php 로 이동
 ?>
 
