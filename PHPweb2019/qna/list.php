@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$scale = 5;   // 한 화면에 표시되는 글 수
+$scale = 8;   // 한 화면에 표시되는 글 수
 
 $num = $_REQUEST['num'];
 $page = $_REQUEST['page'];
