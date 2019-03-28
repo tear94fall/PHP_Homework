@@ -1,36 +1,42 @@
-<?
-   session_start();
+<?php
+session_start();
 
-   include "../dbconn.php";
-   
-   $sql = "select * from down_board where num = $num";   
-   $result = mysql_query($sql, $connect);
-   $row = mysql_fetch_array($result);
+$userid = $_SESSION['userid'];
 
-   // 관리자나 글 쓴 사람만이 삭제 가능
-   if ($userid != "admin" and $userid != $row[id])  
-   {
-      echo("
+
+$num = $_REQUEST['num'];
+$page = $_REQUEST['page'];
+
+include "../dbconn.php";
+
+$sql = "select * from down_board where num = $num";
+$result = $connect->query($sql) or die($this->_connect->error);
+$row = $result->fetch_array();
+
+// 관리자나 글 쓴 사람만이 삭제 가능
+if ($userid != "admin" and $userid != $row[id])
+{
+   echo("
 	   <script>
              window.alert('삭제 권한이 없습니다.')
              history.go(-1)
 	   </script>
            ");
-      exit;
-   }
-   else
+   exit;
+}
+else
+{
+   if ($row[filename])
    {
-      if ($row[filename])
-      {
-         unlink("data/$row[filename]");
-      }
-
-      $sql = "delete from down_board where num = $num";
-      mysql_query($sql, $connect);
+      unlink("data/$row[filename]");
    }
 
-   mysql_close();
+   $sql = "delete from down_board where num = $num";
+   $result = $connect->query($sql) or die($this->_connect->error);
+}
 
-   Header("Location:list.php?page=$page");
+$connect->close();
+
+Header("Location:list.php?page=$page");
 ?>
 
