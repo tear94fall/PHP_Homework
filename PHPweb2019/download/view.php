@@ -2,6 +2,7 @@
 session_start();
 
 $num = $_REQUEST['num'];
+$page = $_REQUEST['page'];
 
 $username = $_SESSION['username'];
 
@@ -108,6 +109,8 @@ $username = $_SESSION['username'];
     <tr>
         <td>
             <?php
+            $userid = $_SESSION['userid'];
+
             $sql = "select * from down_ripple where parent=$num order by num desc";
             $result = $connect->query($sql) or die($this->_connect->error);
             $num_ripple = mysqli_num_rows($result);
@@ -136,7 +139,7 @@ $username = $_SESSION['username'];
                     if ($userid == $ripple_id or $userid=="admin")
                     {
                         echo "
-        <a href='delete_ripple.php?num=$num&ripple_num=$ripple_num'>D
+        <a href='delete_ripple.php?num=$num&ripple_num=$ripple_num'>삭제
            ";
                     }
                     echo "
@@ -170,7 +173,7 @@ echo "
             <textarea style='font-size:9pt;border:1px solid' 
                      name='content'
                     style=background-image:url('img/bbs_text_line.gif');
-                     cols=110 rows=4 wrap=virtual></textarea></td>
+                     cols=100 rows=4 wrap=virtual></textarea></td>
             <td align=right><input type=image src='img/regist.gif'></td>
         </tr>
         <tr height=5><td colspan=2> </td></tr>
@@ -197,5 +200,6 @@ echo "
         ?>
     </tr>
 </table>
+<br><br><br>
 </body>
 </html>
