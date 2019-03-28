@@ -1,32 +1,39 @@
-<?
+<?php
 session_start();
+
+$num = $_REQUEST['num'];
+$page = $_REQUEST['page'];
+$subject = $_REQUEST['subject'];
+$content = $_REQUEST['content'];
+
+
+$userid = $_SESSION['userid'];
 
 include "../dbconn.php";
 
 $sql = "select id from down_board where num = $num";
-$result = mysql_query($sql, $connect);
-
-$row = mysql_fetch_array($result);
+$result = $connect->query($sql) or die($this->_connect->error);
+$row = $result->fetch_array();
 
 if ($userid != "admin" and $userid != $row[id])
 {
-    echo("<script>window.alert('¼öÁ¤ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.');history.go(-1)</script>");
+    echo("<script>window.alert('ìˆ˜ì • ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.');history.go(-1)</script>");
     exit;
 }
 $sql = "select * from down_board where num=$num";
-$result = mysql_query($sql, $connect);
-$row = mysql_fetch_array($result);
+$result = $connect->query($sql) or die($this->_connect->error);
+$row = $result->fetch_array();
 $subject = $row[subject];
 $content = $row[content];
 ?>
 <html>
 <head>
-    <title>:: PHP ÇÁ·Î±×·¡¹Ö ÀÔ¹®¿¡ ¿À½Å°ÍÀ» È¯¿µÇÕ´Ï´Ù~~ ::</title>
+    <title>:: PHP í”„ë¡œê·¸ë˜ë° ì…ë¬¸ì— ì˜¤ì‹ ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤~~ ::</title>
     <link rel='stylesheet' href='../style.css' type='text/css'>
 </head>
 <body leftmargin='0' topmargin='0' marginwidth='0' marginheight='0'>
 
-<form name='writeform' action='modify.php? num=<?php print$num ?>& page=<?php print$page ?>' method='post' enctype='multipart/form-data' >
+<form name='writeform' action='modify.php?num=<?php print$num ?>&page=<?php print$page ?>' method='post' enctype='multipart/form-data' >
     <table width=776 border=0 cellspacing=0 cellpadding=0 align=center>
         <tr>
             <td colspan="6" height=25><img src="img/down_title.gif"></td>
@@ -48,16 +55,16 @@ $content = $row[content];
                     <td>
                         <table width='100%' border=0 cellspacing=0 cellpadding=0 class='txt'>
                             <tr height=25>
-                                <td align=right width=100>ÀÌ¸§&nbsp;</td>
-                                <td align=left> : <? echo $username ?> </td>
+                                <td align=right width=100>ì´ë¦„&nbsp;</td>
+                                <td align=left> : <?php echo $username ?> </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr height=1 bgcolor=#5AB2C8><td colspan=2></td></tr>
                 <tr bgcolor='#D2EAF0' height=20>
-                    <td colspan=2>&nbsp;&nbsp;<b>±Û Á¦¸ñ, ³»¿ë¸¸ ¼öÁ¤ °¡´É
-                            (Ã·ºÎÆÄÀÏ ¼öÁ¤ÇÒ·Á¸é »èÁ¦ ÈÄ ´Ù½Ã ÀÛ¼ºÇÏ¼¼¿ä)</b></td>
+                    <td colspan=2>&nbsp;&nbsp;<b>ê¸€ ì œëª©, ë‚´ìš©ë§Œ ìˆ˜ì • ê°€ëŠ¥
+                            (ì²¨ë¶€íŒŒì¼ ìˆ˜ì •í• ë ¤ë©´ ì‚­ì œ í›„ ë‹¤ì‹œ ì‘ì„±í•˜ì„¸ìš”)</b></td>
                 </tr>
                 <tr height=1 bgcolor=#5AB2C8><td colspan=5></td></tr>
                 <tr>
@@ -65,22 +72,21 @@ $content = $row[content];
                         <table width='100%' border=0 cellspacing=0 cellpadding=0 class='txt'>
                             <tr height=10><td colspan=2></td> </tr>
                             <tr>
-                                <td width=70 height=25 align=left>&nbsp;&nbsp;Á¦¸ñ
+                                <td width=70 height=25 align=left>&nbsp;&nbsp;ì œëª©
                                 </td>
                                 <td height=25 >
                                     <input style='font-size:9pt;border:1px solid' type='text'
                                            name='subject' size=50 maxlength=100
-                                           value='<? echo $subject ?>'></td>
+                                           value='<?php echo $subject ?>'></td>
                             </tr>
 
                             <tr valign=top>
-                                <td width=70 height=25 align=left>&nbsp;&nbsp;³»¿ë
+                                <td width=70 height=25 align=left>&nbsp;&nbsp;ë‚´ìš©
                                 </td>
                                 <td>
             <textarea style='font-size:9pt;border:1px solid' name='content'
                       style=background-image:url('img/bbs_text_line.gif');
-                      cols=74 rows=12 wrap=virtual><? echo $content ?>
-            </textarea></td>
+                      cols=74 rows=12 wrap=virtual><?php echo $content ?></textarea></td>
                             </tr>
                             <tr height=10> <td colspan=2></td> </tr>
                             <tr height=1 bgcolor=#5AB2C8><td colspan=2></td></tr>
@@ -98,7 +104,7 @@ $content = $row[content];
                 </tr>
             </table>
         </td>
-        </table>
+    </table>
 </form>
 </table>
 </body>
