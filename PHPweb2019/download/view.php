@@ -2,6 +2,10 @@
 session_start();
 
 $num = $_REQUEST['num'];
+
+$username = $_SESSION['username'];
+
+
 ?>
 <html>
 <head>
@@ -76,7 +80,7 @@ $num = $_REQUEST['num'];
         <tr valign=center>
           <td width=5></td>
           <td><img src='img/file.gif'>
-              <a href='data/$row[filename]'>$row[filename]
+              <a href='data/$row[filename]' target='_blank'>$row[filename]
                ($row[filesize])</a></td></tr>
          <tr height=5 ><td colspan=2></td></tr>
            ";
