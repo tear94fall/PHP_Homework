@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+$subject = $_REQUEST['subject'];
+$content = $_REQUEST['content'];
+
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
 
@@ -9,12 +12,7 @@ $num = $_REQUEST['num'];
 
 if (!$userid)
 {
-    echo("
-	   <script>
-             window.alert('로그인 후 글쓰기를 하셔야 합니다.')
-             history.go(-1)
-           </script>
-           ");
+    echo("<script>window.alert('로그인 후 글쓰기를 하셔야 합니다.');history.go(-1)</script>");
     exit;
 }
 ?>
@@ -71,8 +69,8 @@ if (!$userid)
                                 $result = $connect->query($sql) or die($this->_connect->error);
                                 $row = $result->fetch_array();
 
-                                $subject = "[re]".$row[subject];
-                                $content = ">".$row[content];
+                                $subject = "[re]".$row['subject'];
+                                $content = ">".$row['content'];
                                 $content = str_replace("\n", "\n>", $content);
                                 $content = "\n\n".$content;
 
@@ -93,7 +91,7 @@ if (!$userid)
                                 <td width=70 height=25 align=left>&nbsp;&nbsp;내용
                                 </td>
                                 <td>
-            <textarea style='font-size:9pt;border:1px solid'name='content'
+            <textarea style='font-size:9pt;border:1px solid' name='content'
                       style=background-image:url('img/bbs_text_line.gif');
                       cols=74 rows=12 wrap=virtual><?php echo $content ?>
              </textarea></td>
@@ -119,7 +117,7 @@ if (!$userid)
                 </tr>
             </table>
         </td>
-        </table>
+    </table>
 </form>
 </table>
 </body>
