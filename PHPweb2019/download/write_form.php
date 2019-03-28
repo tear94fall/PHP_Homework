@@ -93,8 +93,7 @@ if (!$userid)
                                 <td>
             <textarea style='font-size:9pt;border:1px solid' name='content'
                       style=background-image:url('img/bbs_text_line.gif');
-                      cols=74 rows=12 wrap=virtual><?php echo $content ?>
-             </textarea></td>
+                      cols=74 rows=12 wrap=virtual><?php echo $content ?></textarea></td>
                             </tr>
                             <tr>
                                 <td width=70 height=25 align=left>&nbsp;&nbsp;첨부파일</td>
