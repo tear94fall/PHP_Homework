@@ -6,11 +6,19 @@ $username = $_SESSION['username'];
 $subject = $_REQUEST['content'];
 $content = $_REQUEST['subject'];
 
-$upfile = $_FILES['upfile'];
+$num = $_REQUEST['num'];
+$page = $_REQUEST['page'];
 
-$upfile_name = $upfile['name'];     //유효
-$upfile_size = $upfile['size'];         //유효
-$tmp_file = $upfile['tmp_name'];
+
+$save_dir = "data/";
+$upfile = $_FILES["myFile"];
+$upfile_name = $_FILES["upfile"]["name"];
+$upfile_size = $_FILES["upfile"]["size"];
+$tmp_file = $_FILES["upfile"]["tmp_name"];
+
+$filesize = 0;
+
+$dest = $save_dir . $_FILES["upfile"]["name"];
 
 
 if(!$userid) {
@@ -35,12 +43,12 @@ $ip = $_SERVER["REMOTE_ADDR"];
 
 if($upfile_name)
 {
-    if ( file_exists("data/$file_path") ){
+    if ( file_exists("data/$upfile_name") ){
         echo("<script>window.alert('선택한 파일과 동일한 이름이 존재합니다.');history.go(-1)</script>");
         exit;
     }
 
-    if( !$upfile) {
+    if($upfile_size>200000) {
         echo("<script>window.alert('업로드 파일 사이즈가 지정된 용량(2M)을 초과합니다.');history.go(-1)</script>");
         exit;
     }
@@ -56,7 +64,7 @@ if($upfile_name)
     //move_uploaded_file($upfile_name, "data/$upfile_name")
     //!copy($upfile, "data/$upfile_name");
 
-    if(!copy($upfile, "data/$upfile_name"))
+    if(!move_uploaded_file($tmp_file, $dest))
     {
         echo("<script>window.alert('파일을 지정한 디렉토리에 복사하는데 실패했습니다.'); history.go(-1)</script>");
         exit;
@@ -69,19 +77,15 @@ if($upfile_name)
     */
 }
 
-$num = $_REQUEST['num'];
-$page = $_REQUEST['page'];
-
-
 if (!$num)
 {
     $depth = 0;   // depth, ord 를 0으로 초기화
     $ord = 0;
 
     // 레코드 삽입 명령
-    $sql = "insert into down_board (depth, ord, id, name, subject,";
+    $sql = "insert into down_board (group_num, depth, ord, id, name, subject,";
     $sql .= "content, regist_day, hit, ip, filename, filesize) ";
-    $sql .= "values($depth, $ord, '$userid', '$username', 
+    $sql .= "values(0, $depth, $ord, '$userid', '$username', 
                       '$subject',";
     $sql .= "'$content', '$regist_day', 0, '$ip', '$upfile_name', 
                '$filesize')";
