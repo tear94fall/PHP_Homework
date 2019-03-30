@@ -31,7 +31,6 @@ $result = $connect->query($sql) or die($this->_connect->error);
 
 echo("<script>window.alert('정보 변경이 완료되었습니다.'); history.go(-1)</script>");
 
-$connect->close();
 
 echo("<script>top.location.href = '../index.php';</script>");
 ?>
