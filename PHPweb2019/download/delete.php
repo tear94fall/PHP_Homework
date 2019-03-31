@@ -26,12 +26,12 @@ if ($userid != "admin" and $userid != $row[id])
 }
 else
 {
-   if ($row[filename])
+   if ($row['filename'])
    {
       unlink("data/$row[filename]");
    }
 
-   $sql = "delete from down_board where num = $num";
+   $sql = "delete from down_board where num = '$num'";
    $result = $connect->query($sql) or die($this->_connect->error);
 }
 
