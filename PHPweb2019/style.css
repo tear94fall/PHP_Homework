@@ -11,19 +11,19 @@ TD {
 	FONT-SIZE: 8pt; LINE-HEIGHT: 15pt; FONT-FAMILY: Gulim
 }
 A.navigation:visited {
-	COLOR: #000000; TEXT-DECORATION: none; none: 
+	COLOR: #000000; TEXT-DECORATION: none;
 }
 A.navigation:hover {
 	FONT-WEIGHT: bold; COLOR: #393939; TEXT-DECORATION: underline
 }
 A.navigation:active {
-	COLOR: #000000; none: 
+	COLOR: #000000;
 }
 A.navigation:link {
 	COLOR: #000000; TEXT-DECORATION: none
 }
 A.navigat:visited {
-	COLOR: #c85102; TEXT-DECORATION: none; none: 
+	COLOR: #c85102; TEXT-DECORATION: none;
 }
 A.navigat:hover {
 	COLOR: #f8ba25; TEXT-DECORATION: underline
@@ -71,11 +71,11 @@ TD.Center {
 	HEIGHT: 20px
 }
 .menu {
-	FONT: 9pt/140% "±¼¸²"; COLOR: #555555
+	FONT: 9pt/140% "êµ´ë¦¼"; COLOR: #555555
 }
 .menu A {
-	FONT: 9pt/140% "±¼¸²"; COLOR: #555555; TEXT-DECORATION: none
+	FONT: 9pt/140% "êµ´ë¦¼"; COLOR: #555555; TEXT-DECORATION: none
 }
 .menu A:hover {
-	FONT: bold 9pt/140% "±¼¸²"; COLOR: #003399; TEXT-DECORATION: underline
+	FONT: bold 9pt/140% "êµ´ë¦¼"; COLOR: #003399; TEXT-DECORATION: underline
 }
