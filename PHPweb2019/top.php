@@ -1,9 +1,9 @@
 <?php
 /*
 	@ Date : 2019.03.19
-	@ Class : ¼­¹ö º¸¾È½Ç¹«
-	@ Author : ÀÓÁØ¼·
-	@ Brief : ±âÁ¸ php5 ÄÚµå¸¦ php7À¸·Î º¯È¯, ÀÛµ¿ÇÏÁö ¾Ê´Â ÄÚµå ¸ğµÎ ÀÛµ¿µÇµµ·Ï ¼öÁ¤
+	@ Class : ì„œë²„ ë³´ì•ˆì‹¤ë¬´
+	@ Author : ì„ì¤€ì„­
+	@ Brief : ê¸°ì¡´ php5 ì½”ë“œë¥¼ php7ìœ¼ë¡œ ë³€í™˜, ì‘ë™í•˜ì§€ ì•ŠëŠ” ì½”ë“œ ëª¨ë‘ ì‘ë™ë˜ë„ë¡ ìˆ˜ì •
 	@ Warning : php7, mysql8.0, apache24
 */
 
@@ -15,7 +15,7 @@ $userid = $_SESSION['userid'];
 ?>
 <html>
 <head>
-    <title>:: PHP ÇÁ·Î±×·¡¹Ö ÀÔ¹®¿¡ ¿À½Å°ÍÀ» È¯¿µÇÕ´Ï´Ù~~ ::</title>
+    <title>:: PHP í”„ë¡œê·¸ë˜ë° ì…ë¬¸ì— ì˜¤ì‹ ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤~~ ::</title>
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -23,10 +23,10 @@ $userid = $_SESSION['userid'];
     <tr>
         <td>
             <table width=776 cellspacing="0" cellpadding="0" border="0">
-                <!--»ó´ÜÁ¦¸ñ±×¸²-->
+                <!--ìƒë‹¨ì œëª©ê·¸ë¦¼-->
                 <tr>
                     <td colspan="10" align="left">
-                        <img src="top_php_smartbutton1.gif" border="0" width="60%"></td>
+                        <img src="top_php_smartbutton3.jpg" border="0" width="70%" align="center"></td>
                 </tr>
 
                 <tr>
@@ -35,7 +35,7 @@ $userid = $_SESSION['userid'];
                 </tr>
 
 
-                <!--¸Ş´º ½ÃÀÛ-->
+                <!--ë©”ë‰´ ì‹œì‘-->
                 <TR>
                     <TD>
                         <a href="main.php" target="main">
@@ -81,6 +81,6 @@ $userid = $_SESSION['userid'];
         </td>
     </tr>
 </table>
-<!--¸Ş´º³¡-->
+<!--ë©”ë‰´ë-->
 </body>
 </html>
