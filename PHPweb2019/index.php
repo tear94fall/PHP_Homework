@@ -16,7 +16,7 @@
 </head>
 
 <!-- rows => 상단 프레임 크기 변경-->
-<frameset framespacing="0" border="0" frameborder="0" rows="180,*">
+<frameset framespacing="0" border="0" frameborder="0" rows="190,*">
     <frame name="top" src="top.php" scrolling="auto" noresize marginheight="10">
     <frame name="main" src="main.php" scrolling="auto" noresize>
 </frameset>
