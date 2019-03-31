@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title> :: PHP га╥н╠в╥║╧ж ют╧╝©║ ©ю╫е ╟мю╩ х╞©╣гу╢о╢ы~~ :: </title>
+  <title> :: PHP М■└К║°Й╥╦К·≤К╟█ Л·┘К╛╦Л≈░ Л≤╓Л▀═ Й╡┐Л²└ М≥≤Л≤│М∙╘К▀┬К▀╓~~ :: </title>
   <link rel="stylesheet" href="style.css" type="text/css">
  </head>
 
@@ -9,7 +9,7 @@
 <tr height=150><td></td></tr>
 <tr align=center>
 <td>
-    ╦чюнх╜╦И ют╢о╢ы.
+    К╘■Л²╦М≥■К╘╢ Л·┘К▀┬К▀╓.
 </td>
 </tr>
 </table>
