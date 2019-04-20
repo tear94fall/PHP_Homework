@@ -3,8 +3,8 @@ session_start();
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
 
-$subject = $_REQUEST['content'];
-$content = $_REQUEST['subject'];
+$subject = $_REQUEST['subject'];
+$content = $_REQUEST['content'];
 
 $num = $_REQUEST['num'];
 $page = $_REQUEST['page'];
