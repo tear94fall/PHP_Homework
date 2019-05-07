@@ -119,7 +119,7 @@ $result_free = $connect->query($free_query) or die($this->_connect->error);
                                                             <td><br> ♬ 제일 좋아하는 가수는?</td></tr>
                                                         <tr height=7><td> </td></tr>
                                                         <tr><td>
-                                                                <input type=radio name='singer' value='ans1' >1.방탄소년단</td></tr>
+                                                                <input type=radio name='singer' value='ans1' >1.레드벨벳</td></tr>
                                                         <tr height=5><td> </td></tr>
                                                         <tr><td>
                                                                 <input type=radio name='singer' value='ans2' >2.볼빨간 사춘기</td></tr>
@@ -128,7 +128,7 @@ $result_free = $connect->query($free_query) or die($this->_connect->error);
                                                                 <input type=radio name='singer' value='ans3' >3.블랙핑크</td></tr>
                                                         <tr height=5><td> </td></tr>
                                                         <tr><td>
-                                                                <input type=radio name='singer' value='ans4' >4.아이린</td></tr>
+                                                                <input type=radio name='singer' value='ans4' >4.트와이스</td></tr>
                                                         <tr height=10><td> </td></tr>
                                                         <tr height=1 bgcolor=#5AB2C8><td></td></tr>
                                                         <tr>
