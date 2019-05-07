@@ -48,7 +48,7 @@ $ans4_percent = floor($ans4_percent);
     <tr>
         <td height=20 bgcolor='#ffffff'></td>
         <td></td>
-        <td> 방탄소년단 (<b><?php echo $ans1_percent ?></b> %)
+        <td> 레드벨벳 (<b><?php echo $ans1_percent ?></b> %)
             <font color=purple><b><?php echo $row[ans1] ?></b></font> 명</td>
         <td></td>
         <td bgcolor='#ffffff'></td>
@@ -104,8 +104,8 @@ $ans4_percent = floor($ans4_percent);
     <tr>
         <td height=20 bgcolor='#ffffff'></td>
         <td></td>
-        <td> 빅뱅 (<b><?php echo $ans3_percent ?></b> %)
-            <font color=green><b><? echo $row[ans3] ?></b></font> 명</td>
+        <td> 블랙핑크 (<b><?php echo $ans3_percent ?></b> %)
+            <font color=green><b><?php echo $row[ans3] ?></b></font> 명</td>
         <td></td>
         <td bgcolor='#ffffff'></td>
     </tr>
@@ -133,7 +133,7 @@ $ans4_percent = floor($ans4_percent);
     <tr>
         <td height=20 bgcolor='#ffffff'></td>
         <td></td>
-        <td> 아이린 (<b><?php echo $ans4_percent ?></b> %)
+        <td> 트와이스 (<b><?php echo $ans4_percent ?></b> %)
             <font color=skyblue><b><?php echo $row[ans4] ?></b></font> 명</td>
         <td></td>
         <td bgcolor='#ffffff'></td>
