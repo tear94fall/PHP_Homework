@@ -6,11 +6,11 @@
  */
 
 //0. 설정
-$mysql_hostname = 'localhost';
-$mysql_username = 'root';
-$mysql_password = 'root1234';
-$mysql_database = 'test';
-$mysql_port = '3306';
+$mysql_hostname = 'localhost'; // 접속하려는 데이터 베이스의 주소
+$mysql_username = 'root'; // 데이터 베이스 사용자 이름
+$mysql_password = 'root1234'; // 데이터 베이스 비밀 번호
+$mysql_database = 'test'; // 데이터 베이스 이름
+$mysql_port = '3306'; // 데이터베이스 포트
 $mysql_charset = 'utf8';
 
 //1. DB 연결
@@ -22,8 +22,7 @@ if($connect->connect_errno){
     echo '[mysql 연결성공]'."<br>";
 }
 
-//2. 문자셋 지정
-if(! $connect->set_charset($mysql_charset))// (php >= 5.0.5)
+if(! $connect->set_charset($mysql_charset))
 {
     echo '[문자열변경실패] : '.$connect->connect_error;
 }
