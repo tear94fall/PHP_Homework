@@ -13,6 +13,12 @@
 <head>
     <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ks_c_5601-1987">
     <title>:: PHP 프로그래밍 입문에 오신것을 환영합니다~~ ::</title>
+
+    <!-- 파비콘 -->
+    <!-- Chrome, Safari, IE -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Firefox, Opera (Chrome and Safari say thanks but no thanks) -->
+    <link rel="icon" href="favicon.png">
 </head>
 
 <!-- rows => 상단 프레임 크기 변경-->
