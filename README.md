@@ -1,6 +1,3 @@
-# PHP_Homework
-서버보안구축실부 과목
-
 * 개발 환경<br>
 1.아파치 - Apache 2.4.39 Win64<br>
 2.MySQL - mysql-8.0.15-winx64<br>
