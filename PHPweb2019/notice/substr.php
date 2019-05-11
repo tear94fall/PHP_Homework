@@ -1,12 +1,12 @@
 <?php
-       $str1 = substr ("abcdef", 1);    // "bcdef" À» ¹ÝÈ¯ÇÑ´Ù.
-       $str2 = substr ("abcdef", 2, 3); // "cde" À» ¹ÝÈ¯ÇÑ´Ù.
-       /* ¸¸¾à start°¡ À½¼ö¶ó¸é, ¹ÝÈ¯µÇ´Â ¹®ÀÚ¿­Àº stringÀÇ ³¡¿¡¼­ºÎÅÍ 
-          start ¹øÂ° ºÎÅÍ ½ÃÀÛÇÏ´Â ¹®ÀÚ¿­ÀÌ µÈ´Ù. */
+       $str1 = substr ("abcdef", 1);    // "bcdef" ì„ ë°˜í™˜í•œë‹¤.
+       $str2 = substr ("abcdef", 2, 3); // "cde" ì„ ë°˜í™˜í•œë‹¤.
+       /* ë§Œì•½ startê°€ ìŒìˆ˜ë¼ë©´, ë°˜í™˜ë˜ëŠ” ë¬¸ìžì—´ì€ stringì˜ ëì—ì„œë¶€í„° 
+          start ë²ˆì§¸ ë¶€í„° ì‹œìž‘í•˜ëŠ” ë¬¸ìžì—´ì´ ëœë‹¤. */
 
-       $str3 = substr ("abcdef", -1); // "f" ¸¦ ¹ÝÈ¯
-       $str4 = substr ("abcdef", -4); // "cdef" ¸¦ ¹ÝÈ¯
-       $str5 = substr ("abcdef", -3, 1); // "d" ¸¦ ¹ÝÈ¯
+       $str3 = substr ("abcdef", -1); // "f" ë¥¼ ë°˜í™˜
+       $str4 = substr ("abcdef", -4); // "cdef" ë¥¼ ë°˜í™˜
+       $str5 = substr ("abcdef", -3, 1); // "d" ë¥¼ ë°˜í™˜
 
        echo $str1." ".$str2." ".$str3." ".$str4." ".$str5."<br>";
   ?>

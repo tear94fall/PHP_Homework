@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+  <component name="Encoding">
     <file url="file://$PROJECT_DIR$/PHPweb2019/dbconn.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/download/delete.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/download/delete_ripple.php" charset="UTF-8" />
@@ -10,7 +10,10 @@
     <file url="file://$PROJECT_DIR$/PHPweb2019/download/insert_ripple.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/download/list.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/download/modify.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/PHPweb2019/download/modify_form.php" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/modify_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/search.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/view.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/download/write_form.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/delete.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/freeboard.sql" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/freeboard/insert.php" charset="UTF-8" />
@@ -31,12 +34,18 @@
     <file url="file://$PROJECT_DIR$/PHPweb2019/login/logoff.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/login/member_form.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/main.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/main_init.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/delete.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/delete_ripple.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/notice/insert.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/notice/insert_ripple.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/notice/list.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/notice/modify.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/notice/modify_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/notice_board.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/notice_ripple.sql" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/notice/search.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/notice/substr.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/notice/view.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/notice/write_form.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/qna/delete.php" charset="UTF-8" />
@@ -51,12 +60,16 @@
     <file url="file://$PROJECT_DIR$/PHPweb2019/qna/search.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/qna/view.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/qna/write_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/survey/result.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/survey/survey.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/survey/survey.sql" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PHPweb2019/survey/update.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PHPweb2019/top.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/수업 예제/ex_02.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/login.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/수업 예제/example.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/수업 예제/file_upload_example.php" charset="UTF-8" />
     <file url="PROJECT" charset="x-windows-949" />
   </component>
 </project>
