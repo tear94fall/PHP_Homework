@@ -5,15 +5,32 @@ $scale = 8;   // 한 화면에 표시되는 글 수
 
 include "../dbconn.php";
 
-$page = $_REQUEST['page'];
-$find = $_REQUEST['find'];
-$search = $_REQUEST['search'];
+$page = NULL;
+if(isset($_REQUEST['page'])){
+    $page = $_REQUEST['page'];
+}
+
+$find = NULL;
+if(isset($_REQUEST['find'])){
+    $find = $_REQUEST['find'];
+}
+
+$search = NULL;
+if(isset($_REQUEST['search'])){
+    $search = $_REQUEST['search'];
+}
 
 $sql = "select * from qna_board where $find like '%$search%'
            order by group_num desc, ord asc";
 
 $result = $connect->query($sql) or die($this->_connect->error);
+$count = mysqli_num_rows($result);
 $row = $result->fetch_array();
+
+if($count==0){
+    echo("<script>window.alert('등록된 게시물이 없습니다.'); history.go(-1) </script>");
+    exit;
+}
 
 ?>
 <html>

@@ -6,17 +6,24 @@ $result = $connect->query($query) or die($this->_connect->error);
 
 $row = $result->fetch_array();
 
-$total = $row[ans1] + $row[ans2] + $row[ans3] + $row[ans4];
+$ans1_percent = 0;
+$ans2_percent = 0;
+$ans3_percent = 0;
+$ans4_percent = 0;
 
-$ans1_percent = $row[ans1]/$total * 100;
-$ans2_percent = $row[ans2]/$total * 100;
-$ans3_percent = $row[ans3]/$total * 100;
-$ans4_percent = $row[ans4]/$total * 100;
+$total = (int)$row['ans1'] + (int)$row['ans2'] + (int)$row['ans3'] + (int)$row['ans4'];
 
-$ans1_percent = floor($ans1_percent);
-$ans2_percent = floor($ans2_percent);
-$ans3_percent = floor($ans3_percent);
-$ans4_percent = floor($ans4_percent);
+if((int)$total!=0){
+    $ans1_percent = (int)$row['ans1']/(int)$total * 100;
+    $ans2_percent = (int)$row['ans2']/(int)$total * 100;
+    $ans3_percent = (int)$row['ans3']/(int)$total * 100;
+    $ans4_percent = (int)$row['ans4']/(int)(int)$total * 100;
+    
+    $ans1_percent = floor($ans1_percent);
+    $ans2_percent = floor($ans2_percent);
+    $ans3_percent = floor($ans3_percent);
+    $ans4_percent = floor($ans4_percent);
+}
 ?>
 
 <html>
@@ -49,7 +56,7 @@ $ans4_percent = floor($ans4_percent);
         <td height=20 bgcolor='#ffffff'></td>
         <td></td>
         <td> 레드벨벳 (<b><?php echo $ans1_percent ?></b> %)
-            <font color=purple><b><?php echo $row[ans1] ?></b></font> 명</td>
+            <font color=purple><b><?php echo $row['ans1'] ?></b></font> 명</td>
         <td></td>
         <td bgcolor='#ffffff'></td>
     </tr>
@@ -77,7 +84,7 @@ $ans4_percent = floor($ans4_percent);
         <td height=20 bgcolor='#ffffff'></td>
         <td></td>
         <td> 볼빨간 사춘기 (<b><?php echo $ans2_percent ?></b> %)
-            <font color=blue><b><?php echo $row[ans2] ?></b></font> 명</td>
+            <font color=blue><b><?php echo $row['ans2'] ?></b></font> 명</td>
         <td></td>
         <td bgcolor='#ffffff'></td>
     </tr>
@@ -105,7 +112,7 @@ $ans4_percent = floor($ans4_percent);
         <td height=20 bgcolor='#ffffff'></td>
         <td></td>
         <td> 블랙핑크 (<b><?php echo $ans3_percent ?></b> %)
-            <font color=green><b><?php echo $row[ans3] ?></b></font> 명</td>
+            <font color=green><b><?php echo $row['ans3'] ?></b></font> 명</td>
         <td></td>
         <td bgcolor='#ffffff'></td>
     </tr>
@@ -134,7 +141,7 @@ $ans4_percent = floor($ans4_percent);
         <td height=20 bgcolor='#ffffff'></td>
         <td></td>
         <td> 트와이스 (<b><?php echo $ans4_percent ?></b> %)
-            <font color=skyblue><b><?php echo $row[ans4] ?></b></font> 명</td>
+            <font color=skyblue><b><?php echo $row['ans4'] ?></b></font> 명</td>
         <td></td>
         <td bgcolor='#ffffff'></td>
     </tr>

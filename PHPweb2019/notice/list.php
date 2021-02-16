@@ -2,7 +2,10 @@
 session_start();
 
 $scale = 5;   // 한 화면에 표시되는 글 수
-$num = $_REQUEST['num'];
+$num = NULL;
+if(isset($_REQUEST['num'])){
+    $num = $_REQUEST['num'];
+}
 include "../dbconn.php";
 $sql = "select * from notice_board order by num desc";
 $result = $connect->query($sql) or die($this->_connect->error);
@@ -47,7 +50,10 @@ $result = $connect->query($sql) or die($this->_connect->error);
                     <td colspan="5" height=1></td>
                 </tr>
                 <?php
-                $page = $_REQUEST['page'];
+                $page = NULL;
+                if(isset($_REQUEST['page'])){
+                    $page = $_REQUEST['page'];
+                }
                 // 전체 페이지 수($total_page) 계산
                 if ($total_record % $scale == 0)     // $total_record를 $scale로 나눈 나머지 계산
                     $total_page = floor($total_record/$scale);     // 나머지가 0일 때
@@ -86,7 +92,10 @@ $result = $connect->query($sql) or die($this->_connect->error);
                 <tr height=25>
                     <td colspan=5 align=center>
                         <?php
-                        $userid = $_SESSION['userid'];
+                        $userid = NULL;
+                        if(isset($_SESSION['userid'])){
+                            $userid = $_SESSION['userid'];
+                        }
                         // 게시판 목록 하단에 페이지 링크 번호 출력
                         for ($i=1; $i<=$total_page; $i++)
                         {

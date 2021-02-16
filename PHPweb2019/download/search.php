@@ -1,11 +1,25 @@
 <?php
 session_start();
 
-$num = $_REQUEST['num'];
-$page = $_REQUEST['page'];
+$num = NULL;
+if(isset($_REQUEST['num'])){
+    $num = $_REQUEST['num'];
+}
 
-$find = $_REQUEST['find'];
-$search = $_REQUEST['search'];
+$page = 0;
+if(isset($_REQUEST['page'])){
+    $page = $_REQUEST['page'];
+}
+
+$find = NULL;
+if(isset($_REQUEST['find'])){
+    $find = $_REQUEST['find'];
+}
+
+$search = NULL;
+if(isset($_REQUEST['search'])){
+    $search = $_REQUEST['search'];
+}
 
 $scale = 5;   // 한 화면에 표시되는 글 수
 
@@ -15,6 +29,13 @@ $sql = "select * from down_board where $find like '%$search%'
            order by group_num desc, ord asc";
 
 $result = $connect->query($sql) or die($this->_connect->error);
+$count = mysqli_num_rows($result);
+$row = $result->fetch_array();
+
+if($count==0){
+    echo("<script>window.alert('등록된 게시물이 없습니다.'); history.go(-1) </script>");
+    exit;
+}
 ?>
 <html>
 <META http-equiv="Content-Type" content="text/html; charset=Korean">

@@ -9,8 +9,11 @@
 
 session_start();
 // session_destory();
+$userid = NULL;
+if(isset($_SESSION['userid'])){
+    $userid = $_SESSION['userid'];
+}
 
-$userid = $_SESSION['userid'];
 
 ?>
 <html>

@@ -1,8 +1,16 @@
 <?php
 session_start();
 
-$num = $_REQUEST['num'];
-$page = $_REQUEST['page'];
+$num = NULL;
+$page = NULL;
+
+if(isset($_REQUEST['num'])){
+    $num = $_REQUEST['num'];
+}
+
+if(isset($_REQUEST['page'])){
+    $page = $_REQUEST['page'];
+}
 
 $scale = 5;   // 한 화면에 표시되는 글 수
 

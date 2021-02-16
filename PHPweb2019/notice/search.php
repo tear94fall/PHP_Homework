@@ -5,9 +5,21 @@ $scale = 5;   // 한 화면에 표시되는 글 수
 
 include "../dbconn.php";
 
-$page = $_REQUEST['page'];
-$find = $_REQUEST['find'];
-$search = $_REQUEST['search'];
+$page = NULL;
+if(isset($_REQUEST['page'])){
+    $page = $_REQUEST['page'];
+}
+
+$find = NULL;
+if(isset($_REQUEST['find'])){
+    $find = $_REQUEST['find'];
+}
+
+$search = NULL;
+if(isset($_REQUEST['search'])){
+    $search = $_REQUEST['search'];
+}
+
 // $find : subject, name, content 중 하나의 값을 가짐
 // $search : 입력된 문자열
 
@@ -135,7 +147,11 @@ $row = $result->fetch_array();
             </td>
             <td align=right>
                 <?php
-                $userid = $_SESSION['userid'];
+                $userid = NULL;
+                if(isset($_SESSION['userid'])){
+                    $userid = $_SESSION['userid'];
+                }
+                
                 if($userid == "admin")
                 {
                     echo "<a href='write_form.php'><img src='img/i_write.gif' border=0></a>";

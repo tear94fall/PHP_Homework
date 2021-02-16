@@ -11,9 +11,10 @@ $phone2 = $_REQUEST['phone2'];
 $phone3 = $_REQUEST['phone3'];
 $address = $_REQUEST['address'];
 
-
-$userid = $_SESSION['userid'];
-
+$userid = NULL;
+if(isset($_SESSION['userid'])){
+    $userid = $userid['userid'];
+}
 
 $regist_day = date("Y-m-d (H:i)");  // 현재의 '년-월-일-시-분'을 저장
 $ip = $_SERVER["REMOTE_ADDR"];          // 방문자의 IP 주소를 저장

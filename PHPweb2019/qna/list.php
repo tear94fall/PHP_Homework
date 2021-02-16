@@ -3,8 +3,16 @@ session_start();
 
 $scale = 5;   // 한 화면에 표시되는 글 수
 
-$num = $_REQUEST['num'];
-$page = $_REQUEST['page'];
+$num = NULL;
+$page = NULL;
+
+if(isset($_REQUEST['num'])){
+    $num = $_REQUEST['num'];
+}
+
+if(isset($_REQUEST['page'])){
+    $page = $_REQUEST['page'];
+}
 
 include "../dbconn.php";
 $sql = "select * from qna_board order by group_num desc, ord asc";

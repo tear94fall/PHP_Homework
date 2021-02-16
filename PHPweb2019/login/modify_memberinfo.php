@@ -3,19 +3,27 @@ session_start();
 
 include "../dbconn.php";
 
-$userid = $_SESSION['userid'];
+$userid = NULL;
+if(isset($_SESSION['userid'])){
+    $userid = $_SESSION['userid'];
+}
 
 $sql = "select * from member where id='$userid'";
 $result = $connect->query($sql) or die($this->_connect->error);
-
+$count = mysqli_num_rows($result);
 $row = $result->fetch_array();
 
-$phone = explode("-", $row[tel]);
+if($count==0){
+    echo("<script>window.alert('로그인되지 않았습니다.'); history.go(-1)</script>");
+    exit;
+}
+
+$phone = explode("-", $row['tel']);
 $phone1 = $phone[0];
 $phone2 = $phone[1];
-$phone3 = $phone[2];
+$phone3 = $phone[2];  
 
-mysqli_close();
+mysqli_close($connect);
 ?>
 <html>
 <body>
@@ -88,13 +96,13 @@ mysqli_close();
                                 <tr>
                                     <td width=20% bgcolor=#F7F7F7 align=right style=padding-right:6>
                                         * 아이디 : </td>
-                                    <td bgcolor=#FFFFFF style=padding-left:10><?php echo $row[id] ?></td>
+                                    <td bgcolor=#FFFFFF style=padding-left:10><?php echo $row['id'] ?></td>
                                 </tr>
                                 <tr>
                                     <td bgcolor=#F7F7F7 align=right style=padding-right:6> * 이름 :</td>
                                     <td bgcolor=#FFFFFF style=padding-left:10>
                                         <input type=text size=12 class=m_box maxlength=12 name=name
-                                               value='<?php echo $row[name] ?>'></td>
+                                               value='<?php echo $row['name'] ?>'></td>
                                 </tr>
                                 <tr>
                                     <td bgcolor=#F7F7F7 align=right style=padding-right:6>* 비밀번호 :</td>
@@ -107,13 +115,13 @@ mysqli_close();
                                         * 비밀번호 확인 :</td>
                                     <td bgcolor=#FFFFFF style=padding-left:10>
                                         <input type=password size=12 class=m_box maxlength=12
-                                               name=passwd_confirm value='<?php echo $row[passwd] ?>'> </td>
+                                               name=passwd_confirm value='<?php echo $row['passwd'] ?>'> </td>
                                 </tr>
                                 <tr>
                                     <td bgcolor=#F7F7F7 align=right style=padding-right:6>성별 :</td>
                                     <td bgcolor=#FFFFFF style=padding-left:10>
                                         <?php
-                                        if ($row[sex]=='M')
+                                        if ($row['sex']=='M')
                                         {
                                             echo "<input type=radio name=sex value='M' checked>남<input type=radio name=sex value='W'>여";
                                         }
@@ -142,7 +150,7 @@ mysqli_close();
                                 <tr>
                                     <td bgcolor=#FFFFFF style=padding-left:10>
                                         <input type=text size=50 class=m_box name=address
-                                               value='<?php echo $row[address] ?>'></td>
+                                               value='<?php echo $row['address'] ?>'></td>
                                 </tr>
                             </table>
                             <!---------- 회원가입 입력 폼 끝--------------->

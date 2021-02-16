@@ -1,10 +1,25 @@
 <?php
 session_start();
-$userid = $_SESSION['userid'];
-$username = $_SESSION['username'];
 
-$page = $_REQUEST['page'];
-$num = $_REQUEST['num'];
+$userid = NULL;
+if(isset($_SESSION['userid'])){
+    $userid = $userid['userid'];
+}
+
+$username = NULL;
+if(isset($_SESSION['username'])){
+    $username = $_REQUEST['username'];
+}
+
+$page = NULL;
+if(isset($_REQUEST['page'])){
+    $page = $_REQUEST['page'];
+}
+
+$num = NULL;
+if(isset($_REQUEST['num'])){
+    $num = $_REQUEST['num'];
+}
 
 if (!$userid)
 {

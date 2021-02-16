@@ -50,6 +50,10 @@ $row = $result->fetch_array();
                 </tr>
 
                 <?php
+                $page = NULL;
+                if(isset($_REQUEST['page'])){
+                    $page = $_REQUEST['page'];
+                }
 
                 // 전체 페이지 수($total_page) 계산
                 if ($total_record % $scale == 0)
@@ -86,7 +90,10 @@ $row = $result->fetch_array();
                 <tr height=25>
                     <td colspan=5 align=center>
                         <?php
-                        $page = $_REQUEST['page'];
+                        $page = NULL;
+                        if(isset($_REQUEST['page'])){
+                            $page = $_REQUEST['page'];
+                        }
                         // 게시판 목록 하단에 페이지 링크 번호 출력
                         for ($i=1; $i<=$total_page; $i++)
                         {

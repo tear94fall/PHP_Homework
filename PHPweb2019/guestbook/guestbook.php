@@ -37,7 +37,10 @@
     $scale = 5;   // 한 화면에 표시되는 글 수
 
     include "../dbconn.php";
-    $page = $_REQUEST['page'];
+    $page = NULL;
+    if(isset($_REQUEST['page'])){
+        $page = $_REQUEST['page'];
+    }
 
     $sql = "select * from guestbook order by num desc";
     $result = $connect->query($sql) or die($this->_connect->error);

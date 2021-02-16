@@ -1,7 +1,15 @@
 <?php
 session_start();
-$userid = $_SESSION['userid'];
-$username = $_SESSION['username'];
+
+$userid = NULL;
+if(isset($_SESSION['userid'])){
+    $userid = $userid['userid'];
+}
+
+$username = NULL;
+if(isset($_SESSION['username'])){
+    $username = $_REQUEST['username'];
+}
 
 if ($userid != "admin")
 {

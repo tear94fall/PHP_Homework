@@ -46,7 +46,10 @@ $result = $connect->query($sql) or die($this->_connect->error);
 
                 <?php
                 //post 방식으로 값 넘겨 받을때
-                $page = $_REQUEST['page'];
+                $page = NULL;
+                if(isset($_REQUEST['page'])){
+                    $page = $_REQUEST['page'];
+                }
                 // 전체 페이지 수($total_page) 계산
                 if ($total_record % $scale == 0)
                     $total_page = floor($total_record/$scale);

@@ -1,14 +1,35 @@
 <?php
 session_start();
 
-$subject = $_REQUEST['subject'];
-$content = $_REQUEST['content'];
+$subject = NULL;
+if(isset($_REQUEST['subject'])){
+    $subject = $_REQUEST['subject'];
+}
 
-$userid = $_SESSION['userid'];
-$username = $_SESSION['username'];
+$content = NULL;
+if(isset($_REQUEST['content'])){
+    $content = $_REQUEST['content'];
+}
 
-$page = $_REQUEST['page'];
-$num = $_REQUEST['num'];
+$userid = NULL;
+if(isset($_SESSION['userid'])){
+    $userid = $userid['userid'];
+}
+
+$username = NULL;
+if(isset($_SESSION['username'])){
+    $username = $_REQUEST['username'];
+}
+
+$page = NULL;
+if(isset($_REQUEST['page'])){
+    $page = $_REQUEST['page'];
+}
+
+$num = NULL;
+if(isset($_REQUEST['num'])){
+    $num = $_REQUEST['num'];
+}
 
 if (!$userid)
 {
